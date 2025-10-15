@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "author": "Wisdom Ede",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-breadboard-half", "id": "bb1", "top": -31.8, "left": -208.4, "attrs": {} },
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 9.6, "left": 225.64, "attrs": {} },
+    {
+      "type": "wokwi-slide-potentiometer",
+      "id": "pot1",
+      "top": -129.4,
+      "left": -202.6,
+      "attrs": { "travelLength": "30" }
+    },
+    { "type": "wokwi-led", "id": "led1", "top": -22.8, "left": 42.2, "attrs": { "color": "red" } },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 81.6,
+      "left": 37.85,
+      "rotate": 90,
+      "attrs": { "value": "1000" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "esp:5V", "bb1:bp.1", "red", [ "h0" ] ],
+    [ "esp:CMD", "bb1:bn.2", "green", [ "h0" ] ],
+    [ "pot1:GND", "bb1:20t.a", "black", [ "v0" ] ],
+    [ "bb1:20b.j", "bb1:bn.16", "green", [ "v0" ] ],
+    [ "pot1:VCC", "bb1:4t.a", "red", [ "h-9.6", "v96", "h67.2" ] ],
+    [ "bb1:4b.j", "bb1:bp.3", "green", [ "v0" ] ],
+    [ "bb1:1b.i", "esp:14", "green", [ "v67.2", "h393.6", "v-38.4" ] ],
+    [ "pot1:SIG", "bb1:1b.f", "green", [ "h0", "v152.8" ] ],
+    [ "led1:A", "bb1:27t.a", "", [ "$bb" ] ],
+    [ "led1:C", "bb1:26t.a", "", [ "$bb" ] ],
+    [ "bb1:26t.e", "bb1:26b.f", "green", [ "v0" ] ],
+    [ "bb1:26b.j", "bb1:bn.21", "green", [ "v0" ] ],
+    [ "bb1:20t.e", "bb1:20b.f", "green", [ "v0" ] ],
+    [ "bb1:4t.e", "bb1:4b.f", "green", [ "v0" ] ],
+    [ "r1:1", "bb1:27t.e", "", [ "$bb" ] ],
+    [ "r1:2", "bb1:27b.i", "", [ "$bb" ] ],
+    [ "bb1:27b.j", "esp:25", "green", [ "v9.6", "h144", "v-19.2" ] ]
+  ],
+  "dependencies": {}
+}
